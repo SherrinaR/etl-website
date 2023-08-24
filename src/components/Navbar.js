@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import './Navbar.css';
+import { Button } from './Button';
 
 function Navbar() {
   // update the state for clicking the menu icon
@@ -19,6 +21,11 @@ function Navbar() {
     }
   };
 
+  // Hook to render function only once; won't show every page refresh
+  useEffect(() => {
+    showButton();
+  }, []);
+
   // whenever you resize the screen the 'showButton' function activates
   window.addEventListener('resize', showButton);
 
@@ -26,7 +33,7 @@ function Navbar() {
     <>
         <nav className="navbar">
             <div className="navbar-container">
-                <Link to="/" className="navbar-logo">
+                <Link to="/" className="navbar-logo" onClick={closeMobileMenu}>
                     ETL Ministries <i class="uil uil-clinic-medical" />
                 </Link>
                 <div className="menu-icon" onClick={handleClick}>
