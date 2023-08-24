@@ -4,11 +4,24 @@ import { Link } from 'react-router-dom';
 function Navbar() {
   // update the state for clicking the menu icon
   const [click, setClick] = useState(false);
+  const [button, setButton] = useState(true);
 
-  // Will reverse the state when clicked
+  // will reverse the state when clicked
   const handleClick = () => setClick(!click);
-
   const closeMobileMenu = () => setClick(false);
+
+  // function to display button based on screen size
+  const showButton = () => {
+    if(window.innerWidth <= 960) {
+      setButton(false);
+    } else {
+      setButton(true);
+    }
+  };
+
+  // whenever you resize the screen the 'showButton' function activates
+  window.addEventListener('resize', showButton);
+
   return (
     <>
         <nav className="navbar">
@@ -51,6 +64,7 @@ function Navbar() {
                     </Link>
                   </li>
                 </ul>
+                {button && <Button buttonStyle='btn--outline'>ABOUT US</Button>}
             </div>
         </nav>
     </>
