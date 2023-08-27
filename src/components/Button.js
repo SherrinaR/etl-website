@@ -3,9 +3,9 @@ import './Button.css';
 import { Link } from 'react-router-dom';
 
 // default setting for button style & size
-const STYLES = ['btn-primary', 'btn-outnline']
+const STYLES = ['btn--primary', 'btn--outline']
 
-const SIZES = ['btn-medium', 'btn-large']
+const SIZES = ['btn--medium', 'btn--large']
 
 // CSS classes for styling the button
 export const Button = ({
@@ -21,7 +21,7 @@ export const Button = ({
     const checkButtonSize = STYLES.includes(buttonSize) ? buttonSize : SIZES[0];
 
     return (
-        <Link to='/about' className='btn-mobile'>
+        <Link to='/about' className='btn--mobile'>
             <button 
                 className={`btn ${checkButtonStyle} ${checkButtonSize}`}
                 onClick={onClick}
